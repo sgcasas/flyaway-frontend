@@ -4,15 +4,20 @@ import MyReservations from './pages/MyReservations.tsx'
 import Register from './pages/Register.tsx'
 import { Routes } from "react-router-dom"
 import { Route } from "react-router-dom"
+import PrivateRoute from './components/PrivateRoute.tsx'
+import Navbar from './components/Navbar.tsx'
 
 function App() {
   return (
-    <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<FlightSearch />} />
-        <Route path="/reservations" element={<MyReservations />} />
-        <Route path="/register" element={<Register />} />
-    </Routes>
+    <>
+      <Navbar />
+      <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<FlightSearch />} />
+          <Route path="/reservations" element={<PrivateRoute><MyReservations /></PrivateRoute>} />
+          <Route path="/register" element={<Register />} />
+      </Routes>
+    </>
   )
 }
 
